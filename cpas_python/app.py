@@ -66,8 +66,8 @@ def temp_color(T, T_limit):
     if ratio < 0.9:  return GOLD
     return WARN
 
-def card(children, style=None):
-    return html.Div(children, className="card", style=style or {})
+def card(children, style=None, **kwargs):
+    return html.Div(children, className="card", style=style or {}, **kwargs)
 
 def section_label(text):
     return html.Div(text, className="card-title")
