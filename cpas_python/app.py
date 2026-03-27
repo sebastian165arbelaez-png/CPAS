@@ -382,6 +382,55 @@ def render_mission_input(req):
 
 
 @app.callback(
+    Output("store-req",       "data", allow_duplicate=True),
+    Output("summary-content", "children"),
+    Input({"type": "prop-select", "key": dash.ALL}, "n_clicks"),
+    Input({"type": "inj-select",  "key": dash.ALL}, "n_clicks"),
+    Input({"type": "mat-select",  "key": dash.ALL}, "n_clicks"),
+    State("store-req", "data"),
+    prevent_initial_call=True,
+)
+def update_selection(prop_clicks, inj_clicks, mat_clicks, req):
+    req = req or {}
+    triggered = ctx.triggered_id
+    if not triggered:
+        return dash.no_update, dash.no_update
+
+    key = triggered["key"]
+    kind = triggered["type"]
+    if kind == "prop-select":
+        req = {**req, "propellant": key}
+    elif kind == "inj-select":
+        req = {**req, "injector": key}
+    elif kind == "mat-select":
+        req = {**req, "material": key}
+
+    prop = PROPELLANTS.get(req.get("propellant", "kerolox"), {})
+    inj  = INJECTOR_TYPES.get(req.get("injector", "like_doublet"), {})
+    mat  = MATERIALS.get(req.get("material", "copper"), {})
+
+    summary = html.Div([
+        html.Div([
+            html.Span("Propellant", style={"fontSize":"8px","color":MUTED,"textTransform":"uppercase"}),
+            html.Div(prop.get("label","—"), style={"fontSize":"10px","color":prop.get("color",ACCENT),"marginBottom":"6px"}),
+        ]),
+        html.Div([
+            html.Span("Injector", style={"fontSize":"8px","color":MUTED,"textTransform":"uppercase"}),
+            html.Div(inj.get("label","—"), style={"fontSize":"10px","color":inj.get("color",ACCENT),"marginBottom":"6px"}),
+        ]),
+        html.Div([
+            html.Span("Material", style={"fontSize":"8px","color":MUTED,"textTransform":"uppercase"}),
+            html.Div(mat.get("label","—"), style={"fontSize":"10px","color":mat.get("color",ACCENT),"marginBottom":"6px"}),
+        ]),
+        html.Div([
+            html.Span("T_limit", style={"fontSize":"8px","color":MUTED,"textTransform":"uppercase"}),
+            html.Div(f"{mat.get('T_limit','—')} K", style={"fontSize":"10px","color":"#c8d8e8"}),
+        ]),
+    ])
+    return req, summary
+
+
+@app.callback(
     Output("store-candidates", "data"),
     Output("store-req",        "data"),
     Output("store-screen",     "data", allow_duplicate=True),
