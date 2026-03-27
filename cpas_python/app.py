@@ -673,7 +673,7 @@ def _render_thermal_tab(th, mat, geom):
     fig.add_trace(go.Scatter(x=xs, y=th["T_wall_gas"],    name="T_wall_gas",    line=dict(color=WARN,  width=2)))
     fig.add_trace(go.Scatter(x=xs, y=th["T_wall_coolant"],name="T_wall_coolant",line=dict(color=BLUE,  width=1.5)))
     fig.add_trace(go.Scatter(x=xs, y=th["T_aw"],          name="T_aw",          line=dict(color=GOLD,  width=1, dash="dot")))
-    fig.add_hline(y=mat["T_limit"], line_dash="dash", line_color=WARN, annotation_text=f"T_limit {mat['T_limit']}K", annotation_font_color=WARN)
+    fig.add_hline(y=mat["T_limit"], line_dash="dash", line_color=WARN, annotation_text=f"T_limit {mat['T_limit']}K", annotation_font=dict(color=WARN))
     fig.update_layout(**PLOT_LAYOUT, height=280, xaxis_title="Axial position →", yaxis_title="Temperature (K)",
                       title=dict(text="Wall Temperature Profile", font=dict(size=10,color=MUTED)))
 
@@ -790,7 +790,7 @@ def _render_3d_profile_tab(geom, th, candidate):
         surfacecolor=c_grid,
         colorscale=[[0,"#0040a0"],[0.3,"#00a0c0"],[0.6,"#e8b84b"],[0.85,"#ff6b35"],[1.0,"#ffffff"]],
         cmin=T_min, cmax=T_max,
-        colorbar=dict(title="T_wall (K)", thickness=12, titlefont=dict(color=MUTED), tickfont=dict(color=MUTED)),
+        colorbar=dict(title="T_wall (K)", thickness=12, title_font=dict(color=MUTED), tickfont=dict(color=MUTED)),
         opacity=0.92,
         name="Inner wall",
     ))
