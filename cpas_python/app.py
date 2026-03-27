@@ -502,7 +502,7 @@ def render_dashboard(candidates, req):
                 ]),
                 card([
                     section_label("Summary"),
-                    *[metric(k, v, col=ACCENT) for k, v in [
+                    *[metric(k, v, color=ACCENT) for k, v in [
                         ("Total candidates", len(candidates)),
                         ("Pareto front",     sum(1 for c in candidates if c["paretoRank"]==0)),
                         ("Hard fails",       sum(1 for c in candidates if c["isHardFailed"])),
