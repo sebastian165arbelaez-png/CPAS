@@ -88,7 +88,7 @@ body {
 .score-bar-fill      { height: 100%; border-radius: 2px; }
 
 /* Sliders */
-.cpas-slider { accentColor: #00e8c0; width: 100%; }
+.cpas-slider { accent-color: #00e8c0; width: 100%; }
 
 /* Tables */
 .cpas-table { width: 100%; border-collapse: collapse; font-size: 9px; }
@@ -108,7 +108,96 @@ body {
 .banner-ok   { background: rgba(0,232,192,0.08);  border-color: #00e8c0; color: #00e8c0; }
 .banner-info { background: rgba(0,232,192,0.05);  border-color: #1a3a5a; color: #5a9090; }
 
-/* Select / dropdown overrides */
-.Select-control, .Select-menu-outer {
-    background: #0a1420 !important; border-color: #1a2a3a !important; color: #c8d8e8 !important;
+/* ── Dash Dropdown overrides (works for Dash 2.x React-Select internals) ── */
+
+/* Old React-Select v1 class names (Dash < 2.14) */
+.Select-control,
+.Select-menu-outer,
+.Select-menu,
+.Select-option {
+    background: #0a1420 !important;
+    border-color: #1a2a3a !important;
+    color: #c8d8e8 !important;
+    font-family: 'Courier New', Courier, monospace !important;
 }
+.Select-option:hover,
+.Select-option.is-focused  { background: #1a2a3a !important; color: #00e8c0 !important; }
+.Select-option.is-selected { background: rgba(0,232,192,0.15) !important; color: #00e8c0 !important; }
+.Select-value-label        { color: #c8d8e8 !important; }
+.Select-arrow              { border-top-color: #5a7090 !important; }
+.Select-placeholder        { color: #5a7090 !important; }
+.Select--single > .Select-control .Select-value { color: #c8d8e8 !important; }
+.Select-input > input      { color: #c8d8e8 !important; background: transparent !important; }
+
+/* New React-Select v2+ class names (Dash 2.14+) */
+.VirtualizedSelectFocusedOption { background: #1a2a3a !important; }
+
+div[class*="-control"] {
+    background-color: #0a1420 !important;
+    border-color: #1a2a3a !important;
+    color: #c8d8e8 !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    min-height: 34px !important;
+    box-shadow: none !important;
+}
+div[class*="-control"]:hover { border-color: #00e8c0 !important; }
+
+div[class*="-menu"] {
+    background-color: #0a1420 !important;
+    border: 1px solid #1a2a3a !important;
+    color: #c8d8e8 !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    z-index: 9999 !important;
+}
+div[class*="-option"] {
+    background-color: #0a1420 !important;
+    color: #c8d8e8 !important;
+    font-size: 11px !important;
+    cursor: pointer !important;
+}
+div[class*="-option"]:hover,
+div[class*="-option"]:active  { background-color: #1a2a3a !important; color: #00e8c0 !important; }
+
+div[class*="-singleValue"]    { color: #c8d8e8 !important; font-family: 'Courier New', Courier, monospace !important; }
+div[class*="-placeholder"]    { color: #5a7090 !important; }
+div[class*="-indicatorSeparator"] { background-color: #1a2a3a !important; }
+div[class*="-indicatorContainer"] { color: #5a7090 !important; }
+div[class*="-indicatorContainer"]:hover { color: #00e8c0 !important; }
+div[class*="-Input"] input    { color: #c8d8e8 !important; font-family: 'Courier New', Courier, monospace !important; }
+div[class*="-MenuList"]       { background-color: #0a1420 !important; }
+div[class*="-ValueContainer"] { background-color: #0a1420 !important; }
+div[class*="-multiValue"]     { background-color: #1a2a3a !important; }
+div[class*="-multiValueLabel"]{ color: #c8d8e8 !important; }
+
+/* Dash Tabs component dark overrides */
+.dash-tab, .tab--selected {
+    background-color: #0a1420 !important;
+    border-color: #1a2a3a !important;
+    color: #5a7090 !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    font-size: 10px !important;
+}
+.tab--selected {
+    border-top: 2px solid #00e8c0 !important;
+    color: #00e8c0 !important;
+}
+
+/* dcc.Input dark override */
+input[type=number], input[type=text] {
+    background: #06080d !important;
+    color: #00e8c0 !important;
+    border: 1px solid #1a2a3a !important;
+    font-family: 'Courier New', Courier, monospace !important;
+}
+
+/* dcc.Slider tooltip */
+.rc-slider-tooltip-inner {
+    background: #0a1420 !important;
+    color: #00e8c0 !important;
+    border: 1px solid #1a2a3a !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    font-size: 9px !important;
+}
+
+/* Radio items */
+.radio-items label { color: #c8d8e8 !important; }
