@@ -7,9 +7,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-EXPOSE 8050
+EXPOSE 8080
 
 CMD gunicorn app:server \
-    --workers 2 \
-    --bind 0.0.0.0:${PORT:-8050} \
-    --timeout 120
+    --workers 1 \
+    --threads 4 \
+    --worker-class gthread \
+    --bind 0.0.0.0:${PORT:-8080} \
+    --timeout 300
