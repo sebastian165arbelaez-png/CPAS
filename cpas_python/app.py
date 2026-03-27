@@ -32,6 +32,7 @@ app = dash.Dash(
     title="CPAS v2 — Propulsion Synthesis",
     suppress_callback_exceptions=True,
 )
+server = app.server  # Expose Flask server for Gunicorn
 
 # ── Colour palette ─────────────────────────────────────────────────────────────
 BG      = "#06080d"
