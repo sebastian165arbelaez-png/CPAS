@@ -517,8 +517,8 @@ def render_dashboard(candidates, req):
 def _score_histogram(candidates):
     scores = [c["score"]*100 for c in candidates]
     fig = go.Figure(go.Histogram(x=scores, nbinsx=20, marker_color=ACCENT, opacity=0.7))
-    fig.update_layout(**PLOT_LAYOUT, height=180, xaxis_title="Score", yaxis_title="Count",
-                      margin=dict(l=36,r=8,t=20,b=36))
+    fig.update_layout(**{**PLOT_LAYOUT, "height": 180, "xaxis_title": "Score",
+                         "yaxis_title": "Count", "margin": dict(l=36, r=8, t=20, b=36)})
     return fig
 
 
