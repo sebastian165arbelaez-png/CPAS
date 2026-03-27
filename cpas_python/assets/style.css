@@ -1,0 +1,114 @@
+/* CPAS v2 — Dark engineering theme */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background: #06080d;
+    color: #c8d8e8;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 13px;
+}
+
+.cpas-header {
+    border-bottom: 1px solid #1a2a3a;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    gap: 0;
+    background: #08101a;
+}
+
+.cpas-wordmark {
+    font-size: 11px;
+    color: #00e8c0;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-right: 24px;
+}
+
+.cpas-main { padding: 18px 24px; }
+
+/* Tabs */
+.tab-container { display: flex; gap: 2px; margin-bottom: 16px; }
+.tab-btn {
+    padding: 6px 20px; font-size: 9px; letter-spacing: 1.5px;
+    text-transform: uppercase; cursor: pointer; border: 1px solid transparent;
+    border-radius: 3px; background: transparent; color: #5a7090;
+    font-family: inherit;
+}
+.tab-btn.active { background: rgba(0,232,192,0.12); border-color: #00e8c0; color: #00e8c0; }
+.tab-btn:hover:not(.active) { color: #90b0c8; border-color: #1a2a3a; }
+
+/* Cards */
+.card {
+    background: #0a1420;
+    border: 1px solid #1a2a3a;
+    border-radius: 4px;
+    padding: 14px;
+    margin-bottom: 12px;
+}
+.card-title {
+    font-size: 9px; color: #5a7090; text-transform: uppercase;
+    letter-spacing: 2px; margin-bottom: 10px;
+}
+
+/* Metric displays */
+.metric-grid { display: grid; gap: 8px; }
+.metric-card {
+    background: #06080d; border: 1px solid #1a2a3a;
+    border-radius: 3px; padding: 8px 10px;
+}
+.metric-label { font-size: 8px; color: #5a7090; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
+.metric-value { font-size: 16px; font-family: monospace; color: #00e8c0; }
+.metric-unit  { font-size: 10px; color: #5a7090; }
+
+/* Tags */
+.tag {
+    display: inline-block; padding: 2px 8px; border-radius: 10px;
+    font-size: 8px; letter-spacing: 1px; text-transform: uppercase;
+    border: 1px solid; margin-right: 4px; margin-bottom: 2px;
+}
+.tag-pass  { color: #00e8c0; border-color: rgba(0,232,192,0.4); background: rgba(0,232,192,0.08); }
+.tag-fail  { color: #ff6b35; border-color: rgba(255,107,53,0.4); background: rgba(255,107,53,0.08); }
+.tag-warn  { color: #e8b84b; border-color: rgba(232,184,75,0.4); background: rgba(232,184,75,0.08); }
+.tag-blue  { color: #6090ff; border-color: rgba(96,144,255,0.4); background: rgba(96,144,255,0.08); }
+
+/* Candidate list */
+.cand-card {
+    background: #0a1420; border: 1px solid #1a2a3a; border-radius: 3px;
+    padding: 10px 14px; margin-bottom: 6px; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+}
+.cand-card:hover    { border-color: #2a4a6a; }
+.cand-card.selected { border-color: #00e8c0; background: rgba(0,232,192,0.06); }
+.cand-card.hardfail { border-color: rgba(255,107,53,0.5); }
+
+/* Score bar */
+.score-bar-container { height: 4px; background: #1a2a3a; border-radius: 2px; overflow: hidden; }
+.score-bar-fill      { height: 100%; border-radius: 2px; }
+
+/* Sliders */
+.cpas-slider { accentColor: #00e8c0; width: 100%; }
+
+/* Tables */
+.cpas-table { width: 100%; border-collapse: collapse; font-size: 9px; }
+.cpas-table th {
+    background: #1a2a3a; color: #5a7090; text-transform: uppercase;
+    letter-spacing: 1px; padding: 5px 8px; text-align: right;
+    font-weight: normal; border-bottom: 1px solid #2a3a4a;
+}
+.cpas-table td { padding: 4px 8px; text-align: right; border-bottom: 1px solid #0e1824; }
+.cpas-table tr:nth-child(even) td { background: #080e16; }
+.cpas-table td:first-child { text-align: left; color: #00e8c0; text-transform: uppercase; }
+
+/* Banner */
+.banner { padding: 8px 12px; border-radius: 3px; font-size: 9px; margin-bottom: 8px; border-left: 3px solid; }
+.banner-fail { background: rgba(255,107,53,0.10); border-color: #ff6b35; color: #ff6b35; }
+.banner-warn { background: rgba(232,184,75,0.08); border-color: #e8b84b; color: #e8b84b; }
+.banner-ok   { background: rgba(0,232,192,0.08);  border-color: #00e8c0; color: #00e8c0; }
+.banner-info { background: rgba(0,232,192,0.05);  border-color: #1a3a5a; color: #5a9090; }
+
+/* Select / dropdown overrides */
+.Select-control, .Select-menu-outer {
+    background: #0a1420 !important; border-color: #1a2a3a !important; color: #c8d8e8 !important;
+}
